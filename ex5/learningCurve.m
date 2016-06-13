@@ -55,6 +55,25 @@ error_val   = zeros(m, 1);
 
 
 
+for i = 1:m
+
+%To find the theta we used the lambda for the regularization
+theta = trainLinearReg(X(1:i, :), y(1:i), lambda);
+
+%For the train set and cross validation error we dont use regularization, thats way lambda is 0
+
+error_train(i) = linearRegCostFunction(X(1:i, :), y(1:i), theta, 0);
+
+
+%We still prove the error with all the Xval and yval,
+%Because we get a theta when m samples were trained.
+%However we want to know the error_val when m samples were trained.
+%but we take all the cross_function samples to get the error.
+error_val(i) = linearRegCostFunction(Xval, yval, theta, 0);
+
+endfor
+
+
 
 
 
