@@ -32,14 +32,14 @@ J_regularization = (lambda/(2*m)) * sum(theta(2:end).^2);
 J = J_partial + J_regularization;
 
 %Grad without regularization
-%grad_partial = (1/m) * (X' * (hx -y));
+grad_partial = (1/m) * (X' * (hx -y));
 
-%%Grad Cost Added
-%grad_regularization = (lambda/m) .* theta(2:end);
+%%Grad Regularized Cost Added
+grad_regularization = (lambda/m) .* theta(2:end);
 
-%grad_regularization = [0; grad_regularization];
+grad_regularization = [0; grad_regularization];
 
-%grad = grad_partial + grad_regularization;
+grad = grad_partial + grad_regularization;
 
 
 
